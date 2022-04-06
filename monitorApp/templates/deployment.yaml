@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: monitorapp
+  name: monitorapp
+spec:
+  replicas: { { .Values.replicaCount } }
+  selector:
+    matchLabels:
+      app: monitorapp
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: monitorapp
+    spec:
+      containers:
+        - image: monitorapp/app:latest
+          name: monitorapp
+          resources: {}
+status: {}
