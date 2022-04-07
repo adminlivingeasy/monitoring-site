@@ -2,6 +2,7 @@
 import logging
 import psutil
 import os
+from datetime import datetime
 from flask import Flask, Response, request,jsonify
 from flask_sqlalchemy import SQLAlchemy
 
@@ -36,6 +37,11 @@ def testdb():
         return jsonify({"message": "DB Connected"})
     except:
         return jsonify({"message": "DB Not Connected"})
+
+@app.route('/datetime')
+def datetime_print():
+    date = datetime.now()
+    return jsonify({"datetime": str(date)})
 
 if __name__ == "__main__":
     app.run()
